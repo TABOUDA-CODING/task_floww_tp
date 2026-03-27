@@ -15,7 +15,7 @@ const LoginBS: React.FC = () => {
 
   const from = (location.state as { from?: string })?.from ?? '/dashboard';
 
-  // Redirige si déjà connecté
+ 
   useEffect(() => {
     if (state.user) {
       navigate(from, { replace: true });
