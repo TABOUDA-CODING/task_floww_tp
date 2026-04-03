@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Sidebar.module.css';
 
+
 interface Project { id: string; name: string; color: string; }
+
 
 interface SidebarProps {
   projects: Project[];
@@ -10,7 +12,10 @@ interface SidebarProps {
   onDelete: (id: string) => void;
 }
 
+
 export default function Sidebar({ projects, isOpen, onRename, onDelete }: SidebarProps) {
+  console.log('Sidebar re-render'); // ✅ ajouté
+
   return (
     <aside className={`${styles.sidebar} ${isOpen ? styles.open : styles.closed}`}>
       <h2 className={styles.title}>Mes Projets</h2>
@@ -29,7 +34,7 @@ export default function Sidebar({ projects, isOpen, onRename, onDelete }: Sideba
                 <button
                   className={styles.btnRename}
                   onClick={(e) => {
-                    e.preventDefault(); // ✅ évite la navigation au clic bouton
+                    e.preventDefault();
                     onRename(p);
                   }}
                   title="Renommer"
@@ -39,7 +44,7 @@ export default function Sidebar({ projects, isOpen, onRename, onDelete }: Sideba
                 <button
                   className={styles.btnDelete}
                   onClick={(e) => {
-                    e.preventDefault(); // ✅ évite la navigation au clic bouton
+                    e.preventDefault();
                     onDelete(p.id);
                   }}
                   title="Supprimer"
@@ -52,5 +57,4 @@ export default function Sidebar({ projects, isOpen, onRename, onDelete }: Sideba
         ))}
       </ul>
     </aside>
-  );
-}
+  );}
