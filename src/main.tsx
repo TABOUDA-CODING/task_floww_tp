@@ -1,15 +1,17 @@
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './features/auth/AuthContext';
+import { Provider } from 'react-redux';       
+import { store } from './store';               
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
+
 createRoot(document.getElementById('root')!).render(
- <StrictMode>
- <BrowserRouter>
- <AuthProvider>
- <App />
- </AuthProvider>
- </BrowserRouter>
- </StrictMode>
+  <StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>                 
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </StrictMode>
 );
